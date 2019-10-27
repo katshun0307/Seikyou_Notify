@@ -3,6 +3,7 @@
 """
 """
 
+import os
 import pickle
 import requests
 import mechanicalsoup
@@ -52,9 +53,10 @@ def job():
 
 if __name__ == '__main__':
     try:
-        with open("credential.pkl", "rb") as f:
+        prog_dir = os.path.dirname(__file__)
+        cred_path = os.path.join(prog_dir, "credential.pkl")
+        with open(cred_path, "rb") as f:
             cred = pickle.load(f)
-            print(cred)
             id = cred["id"]
             password = cred["password"]
             event_name = cred["event_name"]
